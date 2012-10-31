@@ -5,9 +5,7 @@ License:        MIT
 Summary:        X
 Url:            http://www.x.org
 Group:          System Environment/Libraries
-
 Source:         %{name}-%{version}.tar.bz2
-
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(xorg-macros)
 BuildRequires:  pkgconfig(xproto)
@@ -19,7 +17,6 @@ X.Org X11 libxkbfile runtime library
 Summary:        X
 Group:          Development/Libraries
 Requires:       %{name} = %{version}
-Provides:       libxkbfile-devel
 
 %description devel
 X.Org X11 libxkbfile development package
@@ -31,7 +28,7 @@ X.Org X11 libxkbfile development package
 # FIXME: We use -fno-strict-aliasing, to work around the following bug:
 # maprules.c:1373: warning: dereferencing type-punned pointer will break strict-aliasing rules)
 export CFLAGS="${CFLAGS} %{optflags} -fno-strict-aliasing"
-%reconfigure --disable-static \
+%configure --disable-static \
 	       LDFLAGS="${LDFLAGS} -Wl,--hash-style=both -Wl,--as-needed"
 make %{?_smp_mflags}
 
@@ -39,17 +36,15 @@ make %{?_smp_mflags}
 
 %make_install
 
-# We intentionally don't ship *.la files
-rm -f %{buildroot}%{_libdir}/*.la
-
 %remove_docs
 
 %post -p /sbin/ldconfig
+
 %postun -p /sbin/ldconfig
 
 %files
 %defattr(-,root,root,-)
-%doc COPYING ChangeLog
+%doc COPYING 
 %{_libdir}/libxkbfile.so.1
 %{_libdir}/libxkbfile.so.1.0.2
 
