@@ -2,7 +2,7 @@ Name:           libxkbfile
 Version:        1.0.8
 Release:        1
 License:        MIT
-Summary:        X
+Summary:        X.Org xkbfile library
 Url:            http://www.x.org
 Group:          System Environment/Libraries
 Source:         %{name}-%{version}.tar.bz2
@@ -11,10 +11,10 @@ BuildRequires:  pkgconfig(xorg-macros)
 BuildRequires:  pkgconfig(xproto)
 
 %description
-X.Org X11 libxkbfile runtime library
+X.Org X11 libxkbfile runtime library.
 
 %package devel
-Summary:        X
+Summary:        X.Org xkbfile library
 Group:          Development/Libraries
 Requires:       %{name} = %{version}
 
@@ -28,8 +28,7 @@ X.Org X11 libxkbfile development package
 # FIXME: We use -fno-strict-aliasing, to work around the following bug:
 # maprules.c:1373: warning: dereferencing type-punned pointer will break strict-aliasing rules)
 export CFLAGS="${CFLAGS} %{optflags} -fno-strict-aliasing"
-%configure --disable-static \
-	       LDFLAGS="${LDFLAGS} -Wl,--hash-style=both -Wl,--as-needed"
+%configure --disable-static 
 make %{?_smp_mflags}
 
 %install
@@ -44,7 +43,7 @@ make %{?_smp_mflags}
 
 %files
 %defattr(-,root,root,-)
-%doc COPYING 
+%license COPYING 
 %{_libdir}/libxkbfile.so.1
 %{_libdir}/libxkbfile.so.1.0.2
 
