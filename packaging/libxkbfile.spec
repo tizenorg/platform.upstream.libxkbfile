@@ -4,7 +4,7 @@ Release:        1
 License:        MIT
 Summary:        X.Org xkbfile library
 Url:            http://www.x.org
-Group:          System Environment/Libraries
+Group:          Graphics/X Window System
 Source:         %{name}-%{version}.tar.bz2
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(xorg-macros)

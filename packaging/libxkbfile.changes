@@ -1,3 +1,6 @@
+* Mon Mar 18 2013 Anas Nashif <anas.nashif@intel.com> submit/trunk/20130204.204124@253db65
+- Fixed package groups
+
 * Mon Feb 04 2013 Anas Nashif <anas.nashif@intel.com> upstream/1.0.8@43bf9b1
 - Add multi-lib support
 
