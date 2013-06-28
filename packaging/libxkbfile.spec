@@ -6,6 +6,7 @@ Summary:        X.Org xkbfile library
 Url:            http://www.x.org
 Group:          Graphics/X Window System
 Source:         %{name}-%{version}.tar.bz2
+Source1001: 	libxkbfile.manifest
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(xorg-macros)
 BuildRequires:  pkgconfig(xproto)
@@ -23,6 +24,7 @@ X.Org X11 libxkbfile development package
 
 %prep
 %setup -q
+cp %{SOURCE1001} .
 
 %build
 # FIXME: We use -fno-strict-aliasing, to work around the following bug:
@@ -42,12 +44,14 @@ make %{?_smp_mflags}
 %postun -p /sbin/ldconfig
 
 %files
+%manifest %{name}.manifest
 %defattr(-,root,root,-)
 %license COPYING 
 %{_libdir}/libxkbfile.so.1
 %{_libdir}/libxkbfile.so.1.0.2
 
 %files devel
+%manifest %{name}.manifest
 %defattr(-,root,root,-)
 %{_includedir}/X11/extensions/XKBbells.h
 %{_includedir}/X11/extensions/XKBconfig.h
